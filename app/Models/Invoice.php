@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Repositories\MonthRepository;
+use App\Repositories\StateRepository;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
@@ -44,6 +46,20 @@ class Invoice extends Model
     public function getUpdatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('d-m-Y H:i:s');
+    }
+
+    public function getMonth($months_id)
+    {
+        $month = MonthRepository::findById($months_id);
+        
+        return $month->name;
+    }
+
+    public function getState($states_id)
+    {
+        $month = StateRepository::findById($states_id);
+        
+        return $month->name;
     }
 
 }

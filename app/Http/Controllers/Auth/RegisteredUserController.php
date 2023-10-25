@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Functions;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use App\Repositories\FunctionsRepository;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,7 +38,13 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $function_name = "CLIENT ";
+        $function = new Functions();
+        $functionRepository = new FunctionsRepository($function);
+        $function = $functionRepository->findByName($function_name);
+
         $user = User::create([
+            'functions_id' => $function->id,
             'name' => $request->name,
             'phone' => $request->phone,
             'email' => $request->email,

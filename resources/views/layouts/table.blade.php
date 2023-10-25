@@ -3,9 +3,11 @@
 @include('layouts.head')
 </head>
 <body class="g-sidenav-show  bg-gray-200">
- 
+
+
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-  
+    <br>
+  @include('layouts.form')
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -23,7 +25,6 @@
                       <th class="text-dark text-sm font-weight-bold mb-0">MOIS</th>
                       <th class="text-dark text-sm font-weight-bold mb-0">MONTANT</th>
                       <th class="text-dark text-sm font-weight-bold mb-0">ÉTAT</th>
-                      <th class="text-dark text-sm font-weight-bold mb-0">ACTION</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -31,216 +32,15 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">JANVIER</h6>
+                            <h6 class="mb-0 text-sm">{{ App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->getMonth(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->months_id) }}</h6>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
+                        <p class="text-dark text-xs font-weight-bold mb-0">{{ App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->amount }}</p>
                       </td>
                       <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">FÉVRIER</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">MARS</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">AVRIL</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">MAI</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">JUIN</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">JUILLET</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">AOÛT</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">SEPTEMBRE</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">OCTOBRE</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">NOVEMBRE</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">DÉCEMBRE</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">10000</p>
-                      </td>
-                      <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">PAYÉ</p>
-                      </td>
-                      <td class="-center text-sm">
-                        <span class="badge badge-sm bg-gradient-dark">VALIDER</span>
+                        <p class="text-dark text-xs font-weight-bold mb-0">{{ App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->getState(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->states_id) }}</p>
                       </td>
                     </tr>
                   </tbody>

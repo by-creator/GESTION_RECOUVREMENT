@@ -8,6 +8,9 @@ use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use OpenAdmin\Admin\Controllers\AdminController;
+use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class UserController extends AdminController
 {
@@ -92,5 +95,15 @@ class UserController extends AdminController
         $form->text('remember_token', __('Remember token'));
 
         return $form;
+    }
+
+    public static function getUser(Request $request){
+
+        $request->session()->put('user', Auth::user());
+        $user = new User();
+        $userRepository = new UserRepository($user);
+        $user = $userRepository->findByEmail(Auth::user()->email);
+
+        return $user;
     }
 }
