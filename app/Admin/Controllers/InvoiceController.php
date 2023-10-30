@@ -3,7 +3,6 @@
 namespace App\Admin\Controllers;
 
 use App\Models\User;
-use App\Models\Month;
 use App\Models\State;
 use \App\Models\Invoice;
 use OpenAdmin\Admin\Form;
@@ -37,27 +36,6 @@ class InvoiceController extends AdminController
                 return $users ? $users->name : 'USER NOT FOUND';
             }
         )->filter('like');
-
-        $grid->column('months_id', __('Month'))->display(
-            function ($months_id) {
-                $months = Month::find($months_id);
-                return $months ? $months->name : 'MONTH NOT FOUND';
-            }
-        )->filter([
-            1 => 'JANVIER',
-            2 => 'FÉVRIER ',
-            3 => 'MARS ',
-            4 => 'AVRIL ',
-            5 => 'MAI ',
-            6 => 'JUIN ',
-            7 => 'JUILLET ',
-            8 => 'AOÛT ',
-            9 => 'SEPTEMBRE ',
-            10 => 'OCTOBRE ',
-            11 => 'NOVEMBRE ',
-            12 => 'DÉCEMBRE ',
-
-        ]);
         $grid->column('states_id', __('State'))->display(
             function ($states_id) {
                 $states = State::find($states_id);
@@ -109,7 +87,6 @@ class InvoiceController extends AdminController
 
         $form->text('invoice_number', __('Invoice number'));
         $form->select('users_id', __('User'))->options(User::all()->pluck('name', 'id'));
-        $form->select('months_id', __('Month'))->options(Month::all()->pluck('name', 'id'));
         $form->select('states_id', __('State'))->options(State::all()->pluck('name', 'id'));
         $form->text('amount', __('Amount'));
 

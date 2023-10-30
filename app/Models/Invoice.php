@@ -48,13 +48,6 @@ class Invoice extends Model
         return Carbon::parse($value)->format('d-m-Y H:i:s');
     }
 
-    public function getMonth($months_id)
-    {
-        $month = MonthRepository::findById($months_id);
-        
-        return $month->name;
-    }
-
     public function getState($states_id)
     {
         $month = StateRepository::findById($states_id);

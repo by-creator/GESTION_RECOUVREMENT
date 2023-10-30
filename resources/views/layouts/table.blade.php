@@ -22,7 +22,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-dark text-sm font-weight-bold mb-0">MOIS</th>
+                      <th class="text-dark text-sm font-weight-bold mb-0">DATE</th>
                       <th class="text-dark text-sm font-weight-bold mb-0">MONTANT</th>
                       <th class="text-dark text-sm font-weight-bold mb-0">ÉTAT</th>
                     </tr>
@@ -32,7 +32,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{ App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->getMonth(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->months_id) }}</h6>
+                            <h6 class="mb-0 text-sm">{{ App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->created_at }}</h6>
                           </div>
                         </div>
                       </td>
