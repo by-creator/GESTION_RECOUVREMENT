@@ -17,7 +17,6 @@ class Invoice extends Model
     protected $fillable = [
         'invoice_number',
         'users_id',
-        'months_id',
         'states_id',
         'amount',
     ];
@@ -50,9 +49,9 @@ class Invoice extends Model
 
     public function getState($states_id)
     {
-        $month = StateRepository::findById($states_id);
+        $state = StateRepository::findById($states_id);
         
-        return $month->name;
+        return $state->name;
     }
 
 }

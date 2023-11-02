@@ -32,15 +32,21 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{ App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->created_at }}</h6>
+                            @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email) as $invoice)
+                            <h6 class="mb-0 text-sm">{{ $invoice->created_at }} </h6>
+                            @endforeach
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">{{ App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->amount }}</p>
+                        @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email) as $invoice)
+                        <p class="text-dark text-xs font-weight-bold mb-0">{{ $invoice->amount }}</p>
+                        @endforeach
                       </td>
                       <td>
-                        <p class="text-dark text-xs font-weight-bold mb-0">{{ App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->getState(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->states_id) }}</p>
+                      @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email) as $invoice)
+                        <p class="text-dark text-xs font-weight-bold mb-0">{{ $invoice->getState($invoice->states_id) }}</p>
+                        @endforeach
                       </td>
                     </tr>
                   </tbody>

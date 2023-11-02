@@ -5,10 +5,14 @@ namespace App\Admin\Controllers;
 use App\Models\User;
 use App\Models\State;
 use \App\Models\Invoice;
+use App\Repositories\StateRepository;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use OpenAdmin\Admin\Controllers\AdminController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 class InvoiceController extends AdminController
 {
@@ -91,5 +95,26 @@ class InvoiceController extends AdminController
         $form->text('amount', __('Amount'));
 
         return $form;
+    }
+
+    protected function validation(Request $request)
+    {
+        $user = UserController::getUser($request);
+
+        $state = new State();
+        $stateRepository = new StateRepository($state);
+        $state_name = "EN ATTENTE DE VALIDATION";
+        $state = $stateRepository->findByName($state_name);
+
+        $invoice =  new Invoice();
+
+        $invoice->invoice_number = "sn_".$invoice->id+1;
+        $invoice->users_id = $user->id;
+        $invoice->states_id = $state->id;
+        $invoice->amount = $request->amount;
+
+        $invoice->save();
+
+        return Redirect::route('dashboard');
     }
 }

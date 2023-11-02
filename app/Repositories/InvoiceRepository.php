@@ -21,7 +21,15 @@ class InvoiceRepository extends BaseRepository
     public static function getInvoiceByUser($email)
     {
         $user = UserRepository::findByEmail($email);
-        return Invoice::where('users_id', $user->id)->first();
+        return Invoice::where('users_id', $user->id)->get();
+    }
+
+    public function getInvoiceNumber()
+    {
+        $invoice = Invoice::all();
+
+        
+
     }
 
 }
