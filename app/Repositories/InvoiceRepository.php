@@ -24,12 +24,17 @@ class InvoiceRepository extends BaseRepository
         return Invoice::where('users_id', $user->id)->get();
     }
 
-    public function getInvoiceNumber()
-    {
-        $invoice = Invoice::all();
+   public function getInvoiceNumber()
+   {
+        $invoice =  Invoice::latest()->first();
 
-        
-
-    }
-
+        if($invoice == null)
+        {
+            return 1;
+        }
+        else
+        {
+            return $invoice->id+1;
+        }
+   }
 }

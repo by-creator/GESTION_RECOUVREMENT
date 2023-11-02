@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Models\User;
 use App\Models\State;
 use \App\Models\Invoice;
+use App\Repositories\InvoiceRepository;
 use App\Repositories\StateRepository;
 use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
@@ -107,8 +108,9 @@ class InvoiceController extends AdminController
         $state = $stateRepository->findByName($state_name);
 
         $invoice =  new Invoice();
+        $invoiceRepository = new InvoiceRepository($invoice);
 
-        $invoice->invoice_number = "sn_".$invoice->id+1;
+        $invoice->invoice_number = "sn_".$invoiceRepository->getInvoiceNumber();
         $invoice->users_id = $user->id;
         $invoice->states_id = $state->id;
         $invoice->amount = $request->amount;
