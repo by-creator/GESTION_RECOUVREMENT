@@ -32,19 +32,19 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email) as $invoice)
+                            @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->sortByDesc('created_at') as $invoice)
                             <h6 class="mb-0 text-sm">{{ $invoice->created_at }} </h6>
                             @endforeach
                           </div>
                         </div>
                       </td>
                       <td>
-                        @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email) as $invoice)
+                        @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->sortByDesc('created_at') as $invoice)
                         <p class="text-dark text-xs font-weight-bold mb-0">{{ $invoice->amount }}</p>
                         @endforeach
                       </td>
                       <td>
-                      @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email) as $invoice)
+                      @foreach(App\Repositories\InvoiceRepository::getInvoiceByUser(Auth::user()->email)->sortByDesc('created_at') as $invoice)
                         <p class="text-dark text-xs font-weight-bold mb-0">{{ $invoice->getState($invoice->states_id) }}</p>
                         @endforeach
                       </td>
